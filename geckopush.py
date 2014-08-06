@@ -11,8 +11,8 @@ class Gecko(object):
 
     def number(self, widget_key, number1, number2=None):
         data = {'item' : []}
-        if number1: data['item'].append({'value' : number1, 'text' : ''})
-        if number2: data['item'].append({'value' : number2, 'text' : ''})
+        if number1 is not None: data['item'].append({'value' : number1, 'text' : ''})
+        if number2 is not None: data['item'].append({'value' : number2, 'text' : ''})
         return self.push(widget_key, data)
 
     def rag(self, widget_key, *items):
