@@ -21,6 +21,19 @@ class Gecko(object):
             data['item'].append({'value' : item[0], 'text' : item[1]})
         return self.push(widget_key, data)
 
+    def highchart(self, widget_key, highchart):
+        data = {'highchart': highchart}
+        return self.push(widget_key, data)
+
+    def pie(self, widget_key, *items):
+        data = {'item': []}
+        for item in items:
+            if len(item) == 3:
+                data['item'].append({'value' : item[0], 'label' : item[1], 'color' : item[2]})
+            else:
+                data['item'].append({'value' : item[0], 'label' : item[1]})
+        return self.push(widget_key, data)
+
     def line(self, widget_key, values, **kwargs):
         data = {'item' : [], 'settings' :kwargs}
         for item in values:
@@ -43,5 +56,3 @@ class Gecko(object):
 
     def beater(self, *args, **kwargs):
         return lambda: self.heartbeat(*args, **kwargs)
-
-
